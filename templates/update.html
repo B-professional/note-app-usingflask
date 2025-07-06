@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Note</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Update Note</h1>
+        <form method="post">
+            <input type="text" name="note" id="note-input" value="{{ note['content'] }}">
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notes App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Notes</h1>
+        <ul id="notes-list">
+            {% for note in notes %}
+                <li>
+                    <span>{{ note['content'] }}</span>
+                    <div class="buttons">
+                        <form action="{{ url_for('delete_note', id=note['id']) }}" method="post" style="display: inline;">
+                            <button type="submit" class="delete">Delete</button>
+                        </form>
+                        <a href="{{ url_for('update_note', id=note['id']) }}" class="update">Modify</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <form action="{{ url_for('add_note') }}" method="post">
+            <input type="text" name="note" id="note-input" placeholder="Enter a new note">
+            <button type="submit">Add Note</button>
+        </form>
+    </div>
+</body>
+</html>
